@@ -46,7 +46,7 @@ async def scan(image: UploadFile = File(...), calendar_hint: CalendarHint = Quer
     try:
         temporary.write(content)
         temporary.close()
-        return scan_image(Path(temporary.name), calendar_hint)
+        return scan_image(Path(temporary.name), calendar_hint, display_name=image.filename)
     except (RuntimeError, ValueError) as error:
         raise HTTPException(status_code=422, detail=str(error)) from error
     finally:

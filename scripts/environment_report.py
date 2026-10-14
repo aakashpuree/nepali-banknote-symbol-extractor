@@ -28,12 +28,14 @@ def command_output(command: list[str]) -> str | None:
 def main() -> None:
     root = Path(__file__).resolve().parents[1]
     disk = shutil.disk_usage(root)
+    local_tesseract = root / ".tools" / "tesseract" / "tesseract.exe"
+    tesseract_command = [str(local_tesseract), "--version"] if local_tesseract.is_file() else ["tesseract", "--version"]
     report: dict[str, object] = {
         "platform": platform.platform(),
         "python": sys.version,
         "python_executable": sys.executable,
         "project_free_gib": round(disk.free / 1024**3, 2),
-        "tesseract": command_output(["tesseract", "--version"]),
+        "tesseract": command_output(tesseract_command),
         "nvidia_smi": command_output(["nvidia-smi", "--query-gpu=name,driver_version,memory.total", "--format=csv,noheader"]),
         "packages": {name: package_version(name) for name in ("fastapi", "numpy", "opencv-python-headless", "Pillow", "pytesseract", "torch", "torchvision")},
     }

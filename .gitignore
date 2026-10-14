@@ -6,7 +6,9 @@ __pycache__/
 .ruff_cache/
 artifacts/inventory/*.json
 artifacts/ocr/
+artifacts/api.*.log
 models/checkpoints/*
 !models/checkpoints/.gitkeep
+src/*.egg-info/
 data/annotations/*.txt
 data/annotations/*.json

@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=75.6"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nepali-banknote-scanner"
+version = "0.1.0"
+description = "Local, review-first OCR baseline for Nepali banknotes"
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+license = { file = "LICENSE" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-p no:cacheprovider"
+
+[tool.setuptools.packages.find]
+where = ["src"]

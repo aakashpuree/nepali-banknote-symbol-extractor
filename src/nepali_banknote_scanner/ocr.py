@@ -15,7 +15,12 @@ MAX_UPLOAD_BYTES = 15 * 1024 * 1024
 
 
 def configure_tesseract() -> None:
+    """Prefer an explicit executable, then the isolated project-local engine."""
     command = os.environ.get("TESSERACT_CMD")
+    if not command:
+        local_engine = Path(__file__).resolve().parents[2] / ".tools" / "tesseract" / "tesseract.exe"
+        if local_engine.is_file():
+            command = str(local_engine)
     if command:
         pytesseract.pytesseract.tesseract_cmd = command
 
