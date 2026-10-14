@@ -1,0 +1,12 @@
+.venv/
+.tools/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+artifacts/inventory/*.json
+artifacts/ocr/
+models/checkpoints/*
+!models/checkpoints/.gitkeep
+data/annotations/*.txt
+data/annotations/*.json

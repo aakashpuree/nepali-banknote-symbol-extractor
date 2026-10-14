@@ -1,0 +1,2 @@
+# Intentionally empty: only add a detector after measured baseline OCR needs it.
+# A detector introduces a large PyTorch download and requires reviewed labels.
